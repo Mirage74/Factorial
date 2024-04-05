@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/startPage">
+
+    <fragment
+        android:id="@+id/startPage"
+        android:name="com.balex.factorial.StartPage"
+        android:label="StartPage" >
+        <action
+            android:id="@+id/action_startPage_to_demoFragment"
+            app:destination="@id/demoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/demoFragment"
+        android:name="com.balex.factorial.DemoFragment"
+        android:label="DemoFragment" />
+</navigation>
