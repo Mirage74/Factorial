@@ -17,23 +17,6 @@ class MainActivity : AppCompatActivity() {
         ViewModelProvider(this)[MainViewModel::class.java]
     }
 
-//    suspend fun work(i: Int) = withContext(Dispatchers.Default) {
-//        Thread.sleep(1000)
-//        println("Work $i done")
-//    }
-//
-//    fun main() {
-//        val time = measureTimeMillis {
-//            runBlocking {
-//                for (i in 1..2) {
-//                    launch {
-//                        work(i)
-//                    }
-//                }
-//            }
-//        }
-//        println("Done in $time ms")
-//    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         binding.buttonCalculate.setOnClickListener {
             viewModel.calculate(binding.editTextNumber.text.toString())
         }
-    //main()
+
     }
 
     private fun observeViewModel() {
