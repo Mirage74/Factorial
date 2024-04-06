@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.balex.factorial.databinding.ActivityMainBinding
 
-
 class MainActivity : AppCompatActivity() {
 
     private val binding by lazy {
@@ -18,6 +17,25 @@ class MainActivity : AppCompatActivity() {
         ViewModelProvider(this)[MainViewModel::class.java]
     }
 
+//    suspend fun work(i: Int) = withContext(Dispatchers.Default) {
+//        Thread.sleep(1000)
+//        println("Work $i done")
+//    }
+//
+//    fun main() {
+//        val time = measureTimeMillis {
+//            runBlocking {
+//                for (i in 1..2) {
+//                    launch {
+//                        work(i)
+//                    }
+//                }
+//            }
+//        }
+//        println("Done in $time ms")
+//    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -25,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         binding.buttonCalculate.setOnClickListener {
             viewModel.calculate(binding.editTextNumber.text.toString())
         }
+    //main()
     }
 
     private fun observeViewModel() {
@@ -44,8 +63,8 @@ class MainActivity : AppCompatActivity() {
                     binding.progressBarLoading.visibility = View.VISIBLE
                     binding.buttonCalculate.isEnabled = false
                 }
-                is Result -> {
-                    binding.textViewFactorial.text = it.factorial
+                is Factorial -> {
+                    binding.textViewFactorial.text = it.value
                 }
             }
         }
